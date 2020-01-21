@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yuliash98/JSCourse#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "mocha": "^7.0.0"
   }
 }
