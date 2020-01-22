@@ -4,7 +4,7 @@ const date = require('../utils/dateTime.util.js')
 
 describe('DateTimeUtil TestSuite', () => {
     it('checks that func today() returns today date', () => {
-        var todayDate = '21.01.2020'
+        var todayDate = '22.01.2020'
         assert.equal(date.today(), todayDate, 'Func didn\'t return today date')
     })
     it('checks that func setYear() returns correct result', () => {
