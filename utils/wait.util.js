@@ -1,59 +1,41 @@
 const logger = require('../utils/log.util');
 
-const doWait = (action, interval, expectedValue) => {
+const doWait = (action, expectedValue, interval) => {
     return new Promise((resolve, reject) => {
-        if(action() === expectedValue) {
-            setTimeout(() => resolve(), interval)
+        const actionResult = action();
+        if(actionResult === expectedValue) {
+            setTimeout(() => resolve(), interval);
         }
-        setTimeout(() => {
-            reject()
-            return action()
-        }, interval)
-    })
-}
+        setTimeout(() => reject(actionResult), interval);
+    });
+};
 
-var count = 0
-
-const retrier = (expectedValue) => {  
-    count++
-    logger.info(`[${count}] Wait for ${expectedValue}`)
-    return count
-}
-
-const reached = (expectedValue) => {  
-    logger.warning('Was able to reach expected condition')
-    count = 0
-    return expectedValue
-}
-
-const notReached = (expectedValue, action) => {  
-    logger.warning(`Wasn\'t able to reach expected condition. The last received value is "${action()}"`)
-    count = 0
-    return expectedValue
-}
+const retrierAwait = async (action, expectedValue, maxCount, interval, count) => {  
+    count++;
+    logger.info(`[${count}] Wait for ${expectedValue}`);
+    try {
+        await doWait(action, expectedValue, interval);
+        logger.warning('Was able to reach expected condition');
+        return true;
+    } catch (actionResult) {
+        if(maxCount <= count) {
+            logger.warning(`Was not able to reach expected condition. The last received value is "${actionResult}"`);
+            return false;
+        } else {
+            return retrierAwait(action, expectedValue, maxCount, interval, count);
+        }
+    }
+};
 
 class Wait {
     forTrue(action, maxCount, interval) {
-        count = retrier(true)
-        return doWait(action, interval, true).then(() => {return reached(true)},
-         () => {
-            if(maxCount <= count) {
-                return notReached(false, action)
-            } else {
-                return this.forTrue(action, maxCount, interval)
-            }
-        })      
+        return retrierAwait(action, true, maxCount, interval, 0);    
     }
+
     forFalse(action, maxCount, interval) {
-        count = retrier(false)
-        return doWait(action, interval, false).then(() => {return reached(false)}, () => {
-            if(maxCount <= count) {
-                return notReached(true, action)
-            } else {
-                return this.forFalse(action, maxCount, interval)
-            }
-        })      
+        return retrierAwait(action, false, maxCount, interval, 0);    
+    
     }
 }
 
-module.exports = Wait
+module.exports = Wait;
