@@ -2,7 +2,7 @@ const {describe, it} = require('mocha');
 const {assert} = require('chai');
 const Wait = require('../utils/wait.util');
 
-describe('Wait Test', () => {
+/*describe('Wait Test', () => {
     it('should wait for true "true"', async () => {
         const wait = new Wait();
         const result = await wait.forTrue(() => true, 5, 1000);
@@ -32,4 +32,4 @@ describe('Wait Test', () => {
         assert.isFalse(results[0]);    
         assert.isTrue(results[1]);        
     });
-});
+});*/

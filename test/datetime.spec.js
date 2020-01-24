@@ -1,11 +1,12 @@
 const {describe, it} = require('mocha');
 const {assert} = require('chai');
 const date = require('../utils/dateTime.util.js');
+const formater = require('../helpers/formateDate');
 
 describe('DateTimeUtil TestSuite', () => {
     it('checks that func today() returns today date', () => {
-        var todayDate = '22.01.2020';
-        assert.equal(date.today(), todayDate, 'Func didn\'t return today date');
+        var todayDate = '2020-01-24';
+        assert.equal(formater.formateDate(date.today()), todayDate, 'Func didn\'t return today date');
     });
     it('checks that func setYear() returns correct result', () => {
         var d = new Date(2020, 0, 1);
