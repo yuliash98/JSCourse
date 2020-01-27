@@ -1,7 +1,8 @@
 const {By} = require('selenium-webdriver');
 
-const locators = {
+const homePageLocators = {
+    pageLoc: By.id('searchform'),
     searchInput: By.name('q')
 }
 
-module.exports = {locators}
+module.exports = {homePageLocators}

@@ -1,14 +1,14 @@
 const {Key} = require('selenium-webdriver');
-const {locators} = require('./constants');
+const {homePageLocators} = require('./constants');
 const BasePage = require('../../framework/basePage');
 
 class HomePage extends BasePage{
-    constructor(browser) {
-        super(browser);
+    constructor(browser, locator) {
+        super(browser, locator);
     }
 
     async search(text) {
-        const input = await this.browser.findElement(locators.searchInput, 'Search Input');
+        const input = await this.browser.findElement(homePageLocators.searchInput, 'Search Input');
         await input.sendKeys(text, Key.RETURN);
     }
 }

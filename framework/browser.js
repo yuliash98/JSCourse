@@ -16,7 +16,7 @@ class Browser {
         this.driver = await new Builder().forBrowser('chrome').withCapabilities(capabilities).build();
         try {
             await this.driver.get(config.startURL);
-            await this.driver.manage.setTimeouts(config.timeouts);
+            await this.driver.manage().setTimeouts(config.timeouts);
             logger.info('Browser is started')
         } catch(error) {
             logger.error(`Cannot start browser: ${error}`)
@@ -29,7 +29,7 @@ class Browser {
                 setTimeout(async () => {
                     await this.driver.quit();
                     resolve();
-                }, 500)
+                }, 1000)
             } catch (error) {
                 logger.warning(`Error during closing the browser: ${error}`);
                 reject();
@@ -38,11 +38,21 @@ class Browser {
     }
 
     async findElement(by, name) {
-        try {
-            return this.driver.findElement(by);
-        } catch(error) {
-            logger.error(`Cannot find element ${name}: ${error}`)
-        }
+        return this.driver.findElement(by).catch((error) => {
+            logger.warning(`Cannot find element ${name}: ${error}`)
+        });
+    }
+
+    async isDisplayed(by) {
+        return (await this.driver.findElement(by)).isDisplayed().catch((error) => {
+            logger.warning(`Element is not displayed: ${error}`)
+        });
+    }
+
+    async getText(by) {
+        return (await this.driver.findElement(by)).getText().catch((error) => {
+            logger.warning(`Element is not displayed: ${error}`)
+        });
     }
 }
 
