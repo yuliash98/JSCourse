@@ -9,7 +9,7 @@ class Formater {
         var yyyy = date.getFullYear();
     
         return yyyy + "-" + mm + "-" + dd;
-    };
+    }
 }
 
 module.exports = new Formater();
