@@ -1,0 +1,39 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1580134410466' stop='1580134413558'>
+    <name>Google Search TestSuite</name>
+    <title>Google Search TestSuite</title>
+    <test-cases>
+        <test-case start='1580134411559' status='passed' stop='1580134412502'>
+            <name>should search for "webdriver"</name>
+            <title>should search for "webdriver"</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1580134412502' status='pending' stop='1580134412502'>
+            <name>should find more than 100000 results</name>
+            <title>should find more than 100000 results</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Test ignored</message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1580134412502' status='pending' stop='1580134412502'>
+            <name>should show "https://selenium.dev/projects/" link on the first page</name>
+            <title>should show "https://selenium.dev/projects/" link on the first page</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Test ignored</message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

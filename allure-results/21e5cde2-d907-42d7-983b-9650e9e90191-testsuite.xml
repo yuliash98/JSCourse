@@ -1,0 +1,45 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1580134270520' stop='1580134301776'>
+    <name>Google Search TestSuite</name>
+    <title>Google Search TestSuite</title>
+    <test-cases>
+        <test-case start='1580134271599' status='broken' stop='1580134291602'>
+            <name>should search for "webdriver"</name>
+            <title>should search for "webdriver"</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Timeout of 20000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves. (/home/ITRANSITION.CORP/y.shilkina/JSCourse/JSCourse/test/google/search.spec.js)</message>
+                <stack-trace>Error: Timeout of 20000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves. (/home/ITRANSITION.CORP/y.shilkina/JSCourse/JSCourse/test/google/search.spec.js)
+                    at listOnTimeout (internal/timers.js:536:17)
+                    at processTimers (internal/timers.js:480:7)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1580134291602' status='pending' stop='1580134291602'>
+            <name>should find more than 100000 results</name>
+            <title>should find more than 100000 results</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Test ignored</message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1580134291602' status='pending' stop='1580134291602'>
+            <name>should show "https://selenium.dev/projects/" link on the first page</name>
+            <title>should show "https://selenium.dev/projects/" link on the first page</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Test ignored</message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
