@@ -1,0 +1,1 @@
+To run tests you need to change login ans pass fields in demo.spec.js
